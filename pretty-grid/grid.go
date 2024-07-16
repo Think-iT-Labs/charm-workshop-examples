@@ -2,20 +2,11 @@ package main
 
 import (
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/glamour"
 	"github.com/charmbracelet/lipgloss"
 )
 
 const (
 	GRID_SIZE = 10
-
-	INTRO = `# Some introduction
-
-This is a simple example of Markdown rendering with Glamour!
-Check out the [other examples](https://github.com/charmbracelet/glamour/tree/master/examples) too.
-
-Bye!
-`
 )
 
 type grid struct {
@@ -77,14 +68,6 @@ func (m grid) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m grid) View() string {
 	s := ""
-
-	out, err := glamour.Render(INTRO, "dark")
-
-	if err == nil {
-		s += out
-	} else {
-		s += INTRO
-	}
 
 	for i := 0; i < GRID_SIZE+2; i++ {
 		s += wallStyle.Render(" ")
